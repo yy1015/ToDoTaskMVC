@@ -1,0 +1,87 @@
+﻿@model ToDoTasksMVC.Models.ViewModels.AddTaskViewModel
+@{
+    ViewBag.Title = "Create a Task";
+}
+
+<section id="add-todo">
+    <h1>Add a to-do task</h1>
+    @using (var form = Html.BeginForm())
+    {
+    <fieldset>
+        <legend>New to-do task</legend>
+
+        @Html.LabelFor(m => m.TaskName)
+        @Html.TextBoxFor(m => m.TaskName, new { placeholder = "Task Name" })
+        @Html.ValidationMessageFor(m => m.TaskName)
+
+        <br />
+        @Html.LabelFor(m => m.TaskDescription)
+        @Html.TextAreaFor(m => m.TaskDescription, new { placeholder = "Task Description" })
+        @Html.ValidationMessageFor(m => m.TaskDescription)
+        <br />
+
+        @Html.LabelFor( m => m.HasReminder )
+        @Html.CheckBoxFor( m => m.HasReminder )
+
+        <div id="reminderDateGroup">
+            @Html.LabelFor(m => m.ReminderDate)
+            @Html.TextBoxFor(m => m.ReminderDate, new { type = "date" })
+        </div>
+
+        <br />
+        <input type="submit" name="addTask" value="Add" />
+    </fieldset>
+    }
+
+
+
+
+</section>
+<section id="todo-list">
+    <table>
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Task Description</th>
+                <th>Reminder Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Task 1</td>
+                <td>Task Description 111111</td>
+                <td>01/06/2018</td>
+            </tr>
+            <tr>
+                <td>Task 2</td>
+                <td>Task Description 222222</td>
+                <td>01/05/2018</td>
+            </tr>
+            <tr>
+                <td>Task 3</td>
+                <td>Task Description 333333</td>
+                <td>01/10/2018</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+@section scripts{
+<script>
+    $(function () {
+        var reminderDateGroup = $("#reminderDateGroup");
+        var hasReminderCheckbox = $("#HasReminder");
+
+        reminderDateGroup.hide();
+
+        hasReminderCheckbox.click(function () {
+            if ($(this).is(":checked")) {
+                reminderDateGroup.show();
+            } else {
+                reminderDateGroup.hide();
+                $("#ReminderDate").val(null);
+            }
+        });
+    });
+</script>
+}
