@@ -26,5 +26,10 @@ namespace ToDoTasksMVC.Controllers
 
             return View();
         }
+
+        public ActionResult Product(int id)
+        {
+            return View(id);
+        }
     }
 }
