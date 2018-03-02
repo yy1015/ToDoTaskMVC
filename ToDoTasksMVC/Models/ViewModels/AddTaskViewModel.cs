@@ -13,7 +13,7 @@ namespace ToDoTasksMVC.Models.ViewModels
         public string TaskName { get; set; }
 
         [Required]
-        [Display(Name = "Task Description123")]
+        [Display(Name = "Task Description")]
         public string TaskDescription { get; set; }
 
         public bool HasReminder { get; set; }
